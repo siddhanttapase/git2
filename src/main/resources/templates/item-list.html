@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Item List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Item List</h1>
+        <a href="/items/create" class="btn btn-primary mb-2">Create New Item</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${items}">
+                    <td th:text="${item.id}">ID</td>
+                    <td th:text="${item.name}">Name</td>
+                    <td th:text="${item.price}">Price</td>
+                    <td>
+                        <a th:href="@{/items/edit/{id}(id=${item.id})}" class="btn btn-warning btn-sm">Edit</a>
+                        <a th:href="@{/items/delete/{id}(id=${item.id})}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
